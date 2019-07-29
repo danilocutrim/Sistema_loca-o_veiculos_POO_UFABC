@@ -1,4 +1,4 @@
 package usuarios;
 
-public class Funcionario {
+public class Funcionario  extends Usuario{
 }
