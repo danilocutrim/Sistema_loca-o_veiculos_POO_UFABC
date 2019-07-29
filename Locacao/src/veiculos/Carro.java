@@ -1,4 +1,4 @@
-package Veiculos;
+package veiculos;
 
 public class Carro {
 }
