@@ -68,4 +68,12 @@ public class LocacaoController {
             System.out.println("cliente não encontrado");
         }
     }
+    public static Cliente PesquisaCPF(int cpfnum){
+        for (Locar clte : Db.getTabelalocacoes()){
+            if(clte.getCliente().getCpf() == cpfnum ){
+                return  clte.getCliente();
+            }
+        }
+        return null;
+    }
 }

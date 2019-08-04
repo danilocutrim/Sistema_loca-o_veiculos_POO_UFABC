@@ -14,7 +14,7 @@ public class VanControllers {
     public VanControllers() {
     }
 
-    public static void CadastrarCarro() {
+    public static void CadastrarVan() {
 
         System.out.println("Informe o codigo: ");
         int codVan = leitor.nextInt();
