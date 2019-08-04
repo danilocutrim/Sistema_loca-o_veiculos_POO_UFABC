@@ -5,7 +5,7 @@ import models.User.Funcionario;
 
 import java.util.Scanner;
 
-public class FuncionarioController {
+public abstract class FuncionarioController {
     public static Scanner leitor = new Scanner(System.in);
 
     public static void  CadastraFuncionario(){
@@ -25,6 +25,14 @@ public class FuncionarioController {
         System.out.println("digite  o telefone do funcionario: ");
         int tel = leitor.nextInt();
         leitor.nextLine();
+        
+        System.out.println("digite o login do funcionario:");
+        String login = leitor.nextLine();
+        
+        System.out.println("digite a senha do funcionario:");
+        String senha = leitor.nextLine();
+
+
 
         Funcionario func = new Funcionario();
         func.setNome(nomefuncionario);
@@ -32,7 +40,9 @@ public class FuncionarioController {
         func.setData_Nasc(nasc);
         func.setCpf(cpf);
         func.setTel(tel);
-        Db.getTabelacliente().add(func);
+        func.setLogin(login);
+        func.setSenha(senha);
+        Db.getTabelafuncionario().add(func);
     }
 
     public static Funcionario PesquisaPorCpf(int codfunc) {

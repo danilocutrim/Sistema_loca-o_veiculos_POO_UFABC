@@ -1,6 +1,6 @@
 package models.User;
 
-public  class Usuario {
+public  abstract class Usuario {
 
 	protected String nome;
 	protected String endereco;
@@ -8,14 +8,18 @@ public  class Usuario {
 	protected String sexo;
 	protected int cpf;
 	protected int tel;
+	private String login;
+	private String senha;
+	
 
-
-	public Usuario(String nome, String endereco, String data_Nasc, int cpf, int tel) {
+	public Usuario(String nome, String endereco, String data_Nasc, int cpf, int tel, String login, String senha) {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.data_Nasc = data_Nasc;
 		this.cpf = cpf;
 		this.tel = tel;
+		this.login = login;
+		this.senha = senha;
 	}
 	public Usuario(){
 
@@ -68,5 +72,17 @@ public  class Usuario {
 
 	public void setTel(int tel) {
 		this.tel = tel;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }

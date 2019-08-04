@@ -4,14 +4,13 @@ import db.Db;
 import java.util.Scanner;
 
 import models.veiculos.Moto;
+import models.veiculos.Veiculo;
 
 
-public class MotoController {
-    private static Scanner leitor;
+public abstract class MotoController {
+    private static Scanner leitor = new Scanner(System.in);
     public static void CadastrarMoto(){
-            System.out.println("Informe o codigo: ");
-            int codVan = leitor.nextInt();
-            leitor.nextLine();
+
 
             System.out.println("informe o modelo: ");
             String modeloVan = leitor.nextLine();
@@ -28,8 +27,9 @@ public class MotoController {
 
             leitor.nextLine();
             Moto moto = new Moto();
-
-            moto.setCodigo(codVan);
+            
+            Veiculo.setCodigo_tot(Veiculo.getCodigo_tot() +1);
+            moto.setCodigo(Veiculo.getCodigo_tot());
 
             moto.setAno(anoVan);
 
@@ -38,6 +38,7 @@ public class MotoController {
             moto.setMarca(marcaVan);
 
             moto.setValores(valorMoto);
+            moto.setTipo("Moto");
 
             Db.getTabelaveiculos().add(moto);
 

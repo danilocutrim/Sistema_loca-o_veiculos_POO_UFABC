@@ -6,13 +6,10 @@ import models.veiculos.Veiculo;
 
 import java.util.Scanner;
 
-public class CarroController{
+public abstract class CarroController{
     private static Scanner leitor = new Scanner(System.in);
 
     public static void CadastrarCarro(){
-        System.out.println("Informe o código do carro: ");
-        int codCarro = leitor.nextInt();
-        leitor.nextLine();
 
         System.out.println("informe o ano do carro: ");
         int anoCarro = leitor.nextInt();
@@ -31,17 +28,19 @@ public class CarroController{
         System.out.println("tem ar condicionado: ");
         boolean arCarro = leitor.nextBoolean();
 
-        System.out.println("tem direção: ");
+        System.out.println("tem direcao: ");
         boolean dirCarro = leitor.nextBoolean();
 
         Carro car = new Carro();
-        car.setCodigo(codCarro);
+        Veiculo.setCodigo_tot(Veiculo.getCodigo_tot() +1);
+        car.setCodigo(Veiculo.getCodigo_tot());
         car.setAno(anoCarro);
         car.setModelo(modelocarro);
         car.setMarca(marcaCarro);
         car.setValores(valorcarro);
         car.setAr(arCarro);
         car.setDirecaoHidraulica(dirCarro);
+        car.setTipo("Carro");
         Db.getTabelaveiculos().add(car);
     }
 
@@ -57,4 +56,5 @@ public class CarroController{
         }
         return null;
     }
+   
 }

@@ -3,8 +3,9 @@ package controllers;
 import db.Db;
 import java.util.Scanner;
 import models.veiculos.Van;
+import models.veiculos.Veiculo;
 
-public class VanControllers {
+public abstract class VanControllers {
     private static Scanner leitor;
 
     static {
@@ -15,10 +16,6 @@ public class VanControllers {
     }
 
     public static void CadastrarVan() {
-
-        System.out.println("Informe o codigo: ");
-        int codVan = leitor.nextInt();
-        leitor.nextLine();
 
         System.out.println("informe o modelo: ");
         String modeloVan = leitor.nextLine();
@@ -35,8 +32,8 @@ public class VanControllers {
 
         leitor.nextLine();
         Van van = new Van();
-
-        van.setCodigo(codVan);
+        Veiculo.setCodigo_tot(Veiculo.getCodigo_tot() +1);
+        van.setCodigo(Veiculo.getCodigo_tot());
 
         van.setAno(anoVan);
 
@@ -45,6 +42,8 @@ public class VanControllers {
         van.setMarca(marcaVan);
 
         van.setValores((float)valorVan);
+        
+        van.setTipo("Van");
 
         Db.getTabelaveiculos().add(van);
     }

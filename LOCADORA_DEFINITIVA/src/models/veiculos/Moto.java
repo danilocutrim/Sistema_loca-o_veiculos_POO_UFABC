@@ -1,21 +1,20 @@
 package models.veiculos;
 
 public class Moto  extends Veiculo{
+	private String cilindradas;
     public Moto() {
 
     }
 
-    public Moto(int codigo, String modelo, String marca, int ano, float valores, String cilindradas, String tipo) {
-        super(codigo, modelo, marca, ano, valores);
+    public Moto(String modelo, String marca, int ano, float valores, String cilindradas, String tipo) {
+        super(modelo, marca, ano, valores);
         this.cilindradas = cilindradas;
     }
 
-    private String cilindradas;
 
 
-    public Moto(int codigo, String modelo, String marca, int ano, float valores) {
-        super(codigo, modelo, marca, ano, valores);
-        this.cilindradas = cilindradas;
+    public Moto(String modelo, String marca, int ano, float valores) {
+        super(modelo, marca, ano, valores);
     }
 
     public String getCilindradas() {

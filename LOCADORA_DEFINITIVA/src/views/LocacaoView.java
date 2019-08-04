@@ -2,22 +2,22 @@ package views;
 
 import controllers.LocacaoController;
 import db.Db;
-import models.Locacao.Locar;
+import models.Locacao.Aluguel;
 import models.User.Cliente;
+import models.veiculos.Veiculo;
 
 import java.util.Scanner;
 
-public class LocacaoView {
+public abstract class LocacaoView {
     private static Scanner leitor = new Scanner(System.in);
 
 
     public static void LocacoesEfetuadas(){
-        System.out.println("Lista de locações: ");
+        System.out.println("Lista de locacoes: ");
         System.out.println("-----------");
 
-        for(Locar loc : Db.getTabelalocacoes()){
-            System.out.println("CPF: " + loc.getCliente().getCpf());
-            System.out.println("Nome: " + loc.getCliente().getNome());
+        for(Aluguel loc : Db.getTabelalocacoes()){
+            System.out.println(loc.toString());
 
         }
     }
@@ -28,13 +28,23 @@ public class LocacaoView {
         Cliente clt = LocacaoController.PesquisaCPF(cpf);
         System.out.println("------");
         if(clt != null){
-            for(Locar pesq : Db.getTabelalocacoes()){
-                System.out.println("CPF: " + clt.getCpf());
-                System.out.println("Nome: " + clt.getNome());
+            for(Aluguel al : Db.getTabelalocacoes()){
+                if(al.getCliente()==clt)
+                	System.out.print(al.toString());             
             }
         } else {
-            System.out.println("CPF não encontrado");
+            System.out.println("CPF nao encontrado");
         }
     }
+    public static void ExibirLocacaoPorVeiculo()
+    {
+    	System.out.print("Digite o cod do Ve�culo");
+    	int cod = leitor.nextInt();
+    	leitor.nextLine();
+    	Veiculo v = LocacaoController.BuscaCod(cod);
+    	v.print_Historico();
+
+    }
+    
 
 }

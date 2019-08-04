@@ -1,12 +1,23 @@
 package models.veiculos;
 
+import java.util.ArrayList;
+
+import models.Locacao.*;
+import models.User.Cliente;
+
 public  abstract class Veiculo {
 
-    private int codigo;
+    private static int codigo_tot =0;
+    private int codigo =0;
     private String modelo;
     private String marca;
     private int ano;
     private float valores;
+    private String tipo;
+	public ArrayList<Aluguel>historico = new ArrayList<>() ;
+	private boolean alugado;
+	private boolean reservado;
+	private Cliente clienteReserva;
 
     public String getTipo() {
         return tipo;
@@ -16,17 +27,23 @@ public  abstract class Veiculo {
         this.tipo = tipo;
     }
 
-    private String tipo;
     public Veiculo(){
 
     }
 
-    public Veiculo(int codigo, String modelo, String marca, int ano, float valores) {
-        this.codigo = codigo;
+    public Veiculo( String modelo, String marca, int ano, float valores) {
         this.modelo = modelo;
         this.marca = marca;
         this.ano = ano;
         this.valores = valores;
+    }
+    public void print_Historico()
+    {
+    	for (Aluguel al:historico)
+    	{
+    		System.out.println(al.toString());
+    		System.out.println("--------------------------");
+    	}
     }
 
 
@@ -69,6 +86,38 @@ public  abstract class Veiculo {
     public void setValores(float valores) {
         this.valores = valores;
     }
+
+	public static int getCodigo_tot() {
+		return codigo_tot;
+	}
+
+	public static void setCodigo_tot(int codigo_tot) {
+		Veiculo.codigo_tot = codigo_tot;
+	}
+
+	public boolean isAlugado() {
+		return alugado;
+	}
+
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
+	}
+
+	public boolean isReservado() {
+		return reservado;
+	}
+
+	public void setReservado(boolean reservado) {
+		this.reservado = reservado;
+	}
+
+	public Cliente getClienteReserva() {
+		return clienteReserva;
+	}
+
+	public void setClienteReserva(Cliente clienteReserva) {
+		this.clienteReserva = clienteReserva;
+	}
 }
 
 

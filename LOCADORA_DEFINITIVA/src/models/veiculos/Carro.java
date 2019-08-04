@@ -3,20 +3,9 @@ package models.veiculos;
 public class Carro  extends Veiculo{
     private boolean ar;
     private boolean direcaoHidraulica;
-    private String tipo = "Carro";
 
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-
-    public Carro(int codigo, String modelo, String marca, int ano, float valores) {
-        super(codigo, modelo, marca, ano, valores);
+    public Carro(String modelo, String marca, int ano, float valores) {
+        super(modelo, marca, ano, valores);
     }
     public Carro(){
 

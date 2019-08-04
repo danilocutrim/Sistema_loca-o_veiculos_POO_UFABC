@@ -1,79 +1,107 @@
 package controllers;
 
 import db.Db;
-import models.Locacao.Locar;
 import models.User.Cliente;
-import models.veiculos.Carro;
 import models.veiculos.Veiculo;
+import models.Locacao.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
-public class LocacaoController {
-    public static Scanner leitor = new Scanner(System.in);
+public abstract class LocacaoController {
+	public static Scanner leitor = new Scanner(System.in);
 
-    public static void Loca(){
-        System.out.println("Efetuar locação");
-        System.out.println("");
+	public static void LocarPorCpf() {
+		System.out.println("Preencha o numero do CPF:");
+		int Cpfcod = leitor.nextInt();
+		Cliente cl = (Cliente) ClienteController.PesquisaPorCpf(Cpfcod);
 
-    }
-    public static void LocarPorCpf(){
-        System.out.println("Preencha o numero do CPF:");
-        int Cpfcod = leitor.nextInt();
-        Cliente cl = (Cliente) ClienteController.PesquisaPorCpf(Cpfcod);
+		if (cl != null) {
+			System.out.println("CPF encontrados: ");
+			System.out.println("CPF:" + cl.getCpf());
+			System.out.println("");
 
-        if(cl !=null){
-            System.out.println("CPF encontrados: ");
-            System.out.println("CPF:" + cl.getCpf());
-            System.out.println("");
+			int codveiculo;
+			Veiculo cr = null;
+			System.out.println("informe o codigo do veiculo");
+			codveiculo = leitor.nextInt();
+			leitor.nextLine();
+			cr = CarroController.PesquisarCarroPorCodigo(codveiculo);
+			if (cr != null) {
+				if (cr.isAlugado())
+					System.out.println("Este veiculo ja esta alugado");
+				else {
+					if (cr.isReservado())
+						System.out.println("Este veiculo ja esta reservado");
+					else {
 
-            System.out.println("informe o 1 para alugar Carro, 2 para alugar moto ou 3 para alugar van");
-            int op = leitor.nextInt();
-            leitor.nextLine();
-            Veiculo veiculoLoca;
-            int codveiculo;
-            Veiculo cr = null;
-            switch (op){
-                case 1:
-                    System.out.println("informe o código do carro : ");
-                    codveiculo = leitor.nextInt();
-                    leitor.nextLine();
-                    cr = CarroController.PesquisarCarroPorCodigo(codveiculo);
-                    break;
-                case 2:
-                    System.out.println("informe o código da moto : ");
-                    codveiculo= leitor.nextInt();
-                    leitor.nextLine();
-                    cr = CarroController.PesquisarCarroPorCodigo(codveiculo);
+						System.out.println("informe o a data de retirada do veiculo");
+						int a = leitor.nextInt();
+						int b = leitor.nextInt();
+						int c = leitor.nextInt();
+						System.out.println("informe o numero de dias da locacao");
+						int dias = leitor.nextInt();
 
-                    break;
-                case 3:
-                    System.out.println("informe o codigo da van");
-                    codveiculo = leitor.nextInt();
-                    leitor.nextLine();
-                    cr = CarroController.PesquisarCarroPorCodigo(codveiculo);
-            }
-            if(cr != null){
-                System.out.println("Veiculo :" +cr.getCodigo());
-                System.out.println("");
-                Locar pf = new Locar();
-                pf.setCliente(cl);
-                pf.setVeiculo(cr);
-                Db.getTabelalocacoes().add(pf);
-                System.out.println(pf.AlugaParaCliente());
-            }
-            else{
-                System.out.println("veiculo não encontrado");
-            }
-        } else{
-            System.out.println("cliente não encontrado");
-        }
-    }
-    public static Cliente PesquisaCPF(int cpfnum){
-        for (Locar clte : Db.getTabelalocacoes()){
-            if(clte.getCliente().getCpf() == cpfnum ){
-                return  clte.getCliente();
-            }
-        }
-        return null;
-    }
+						System.out.println("Veiculo :" + cr.getCodigo());
+						System.out.println("");
+						Aluguel aluguel = new Aluguel(cl, LocalDate.of(c, b, a), dias, cr);
+						cr.historico.add(aluguel);
+						cr.setAlugado(true);
+						Db.getTabelalocacoes().add(aluguel);
+						System.out.println("Augado com sucesso");
+					}
+				}
+			} else {
+				System.out.println("veiculo nao encontrado");
+			}
+		} else {
+			System.out.println("cliente nao encontrado");
+		}
+	}
+
+	public static Cliente PesquisaCPF(int cpfnum) {
+		for (Cliente cl : Db.getTabelacliente()) {
+			if (cl.getCpf() == cpfnum) {
+				return cl;
+			}
+		}
+		return null;
+	}
+
+	public static Veiculo BuscaCod(int cod) {
+		for (Veiculo v : Db.getTabelaveiculos()) {
+			if (v.getCodigo() == cod)
+				return v;
+		}
+		return null;
+	}
+
+	public static void DevolverVeiculo() {
+		System.out.println("Digite o cod do Ve�culo");
+		int cod = leitor.nextInt();
+		leitor.nextLine();
+		System.out.println("informe o a data de devolucao do veiculo");
+		int a = leitor.nextInt();
+		int b = leitor.nextInt();
+		int c = leitor.nextInt();
+		Veiculo v = LocacaoController.BuscaCod(cod);
+		v.historico.get(v.historico.size() - 1).Devolver(LocalDate.of(c, b, a));
+		v.setAlugado(false);
+	}
+
+	public static void ReservarVeiculo() {
+		System.out.print("Digite o cod do Ve�culo");
+		int cod = leitor.nextInt();
+		leitor.nextLine();
+		Veiculo v = LocacaoController.BuscaCod(cod);
+		v.setReservado(true);
+	}
+
+	public static void CancelarReservaVeiculo() {
+		System.out.print("Digite o cod do Ve�culo");
+		int cod = leitor.nextInt();
+		leitor.nextLine();
+		Veiculo v = LocacaoController.BuscaCod(cod);
+		v.setReservado(false);
+	}
 }

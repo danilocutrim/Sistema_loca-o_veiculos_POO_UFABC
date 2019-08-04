@@ -2,14 +2,15 @@ package Principal;
 
 
 import db.Db;
-import views.OptionsViews;
+import views.LoginView;
 
 public class MAIN {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Db.LaunchDB();
-		OptionsViews.MostrarMenu();
-
+		LoginView.Login();
+		
+		
 	}
 }
