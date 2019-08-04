@@ -26,7 +26,7 @@ public abstract class LocacaoController {
 			System.out.println("informe o codigo do veiculo");
 			codveiculo = leitor.nextInt();
 			leitor.nextLine();
-			cr = CarroController.PesquisarCarroPorCodigo(codveiculo);
+			cr = PesquisarCarroPorCodigo(codveiculo);
 			if (cr != null) {
 				if (cr.isAlugado())
 					System.out.println("Este veiculo ja esta alugado");
@@ -77,7 +77,7 @@ public abstract class LocacaoController {
 	}
 
 	public static void DevolverVeiculo() {
-		System.out.println("Digite o cod do Veículo");
+		System.out.println("Digite o cod do Veï¿½culo");
 		int cod = leitor.nextInt();
 		leitor.nextLine();
 		System.out.println("informe o a data de devolucao do veiculo");
@@ -90,7 +90,7 @@ public abstract class LocacaoController {
 	}
 
 	public static void ReservarVeiculo() {
-		System.out.print("Digite o cod do Veículo");
+		System.out.print("Digite o cod do Veï¿½culo");
 		int cod = leitor.nextInt();
 		leitor.nextLine();
 		Veiculo v = LocacaoController.BuscaCod(cod);
@@ -98,10 +98,23 @@ public abstract class LocacaoController {
 	}
 
 	public static void CancelarReservaVeiculo() {
-		System.out.print("Digite o cod do Veículo");
+		System.out.print("Digite o cod do Veï¿½culo");
 		int cod = leitor.nextInt();
 		leitor.nextLine();
 		Veiculo v = LocacaoController.BuscaCod(cod);
 		v.setReservado(false);
+	}
+
+	public static Veiculo PesquisarCarroPorCodigo(int codCarro)
+	{
+
+		for(Veiculo car : Db.getTabelaveiculos())
+		{
+			if(car.getCodigo() == codCarro)
+			{
+				return car;
+			}
+		}
+		return null;
 	}
 }

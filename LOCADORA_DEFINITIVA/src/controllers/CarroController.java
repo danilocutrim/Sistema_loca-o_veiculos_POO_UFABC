@@ -44,17 +44,4 @@ public abstract class CarroController{
         Db.getTabelaveiculos().add(car);
     }
 
-    public static Veiculo PesquisarCarroPorCodigo(int codCarro)
-    {
-
-        for(Veiculo car : Db.getTabelaveiculos())
-        {
-            if(car.getCodigo() == codCarro)
-            {
-                return car;
-            }
-        }
-        return null;
-    }
-
 }

@@ -1,6 +1,6 @@
 package views;
 
-import controllers.CarroController;
+import controllers.LocacaoController;
 import db.Db;
 import models.veiculos.Veiculo;
 
@@ -25,7 +25,7 @@ public abstract class VeiculoView {
         int codveic = leitor.nextInt();
         leitor.nextLine();
 
-        Veiculo veicu = CarroController.PesquisarCarroPorCodigo(codveic);
+        Veiculo veicu = LocacaoController.PesquisarCarroPorCodigo(codveic);
         if (veicu != null) {
             for( Veiculo c : Db.getTabelaveiculos()){
                 if(c.getCodigo() == veicu.getCodigo()){
@@ -48,7 +48,7 @@ public abstract class VeiculoView {
         int codCarro  = leitor.nextInt();
         System.out.println("Insira o numero de dias do aluguel: ");
         int dias = leitor.nextInt();
-        Veiculo v = CarroController.PesquisarCarroPorCodigo(codCarro);
+        Veiculo v = LocacaoController.PesquisarCarroPorCodigo(codCarro);
         System.out.println("Valor do orcamento solicitado: " + v.getValores()*dias);
     }
 
