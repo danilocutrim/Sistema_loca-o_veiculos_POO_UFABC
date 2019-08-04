@@ -1,15 +1,22 @@
 package models.Locacao;
 
+import controllers.AlugaCarro;
 import models.User.Cliente;
 import models.veiculos.Veiculo;
 
-public abstract class Locar {
+import java.time.LocalDate;
+
+public  class Locar  implements AlugaCarro {
     private Veiculo veiculo;
     private Cliente cliente;
+    private String status;
 
     public Locar(Veiculo veiculo, Cliente cliente) {
         this.veiculo = veiculo;
         this.cliente = cliente;
+    }
+    public Locar(){
+
     }
 
     public Veiculo getVeiculo() {
@@ -26,5 +33,11 @@ public abstract class Locar {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public String AlugaParaCliente() {
+        this.status = "locação efetuada";
+        return status;
     }
 }
