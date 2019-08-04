@@ -25,18 +25,7 @@ public abstract class Db {
     public static List<Cliente> getTabelacliente() {
         return tabelacliente;
     }
-    
-    public void salvarVeiculos() throws IOException
-    {
-    	FileWriter arq = new FileWriter("C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\LOCADORA_DEFINITIVA\\bin");
-        PrintWriter gravarArq = new PrintWriter(arq);
-     
-        gravarArq.printf("+--Resultado--+%n");
-        for(Veiculo v : tabelaveiculos)
-        {
-        	gravarArq.printf
-        }
-    }
+
     
     public static List<Funcionario> getTabelafuncionario() {
         return tabelafuncionario;
@@ -56,19 +45,19 @@ public abstract class Db {
         tabelalocacoes = new ArrayList<Aluguel>();
     }
 
-	public static String getLogin() {
-		return login;
-	}
+    public static String getLogin() {
+        return login;
+    }
 
-	public static void setLogin(String login) {
-		Db.login = login;
-	}
+    public static void setLogin(String login) {
+        Db.login = login;
+    }
 
-	public static String getSenha() {
-		return senha;
-	}
+    public static String getSenha() {
+        return senha;
+    }
 
-	public static void setSenha(String senha) {
-		Db.senha = senha;
-	}
+    public static void setSenha(String senha) {
+        Db.senha = senha;
+    }
 }
