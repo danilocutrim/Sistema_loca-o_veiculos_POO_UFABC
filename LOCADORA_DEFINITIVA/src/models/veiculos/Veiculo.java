@@ -2,6 +2,7 @@ package models.veiculos;
 
 import java.util.ArrayList;
 
+import db.Db;
 import models.Locacao.*;
 import models.User.Cliente;
 
@@ -14,10 +15,10 @@ public  abstract class Veiculo {
     private int ano;
     private float valores;
     private String tipo;
-    public ArrayList<Aluguel>historico = new ArrayList<>() ;
-    private boolean alugado;
-    private boolean reservado;
-    private Cliente clienteReserva;
+	public ArrayList<Aluguel>historico = new ArrayList<>() ;
+	private boolean alugado;
+	private boolean reservado;
+	private Cliente clienteReserva;
 
     public String getTipo() {
         return tipo;
@@ -39,12 +40,13 @@ public  abstract class Veiculo {
     }
     public void print_Historico()
     {
-        for (Aluguel al:historico)
-        {
-            System.out.println(al.toString());
-            System.out.println("--------------------------");
-        }
+    	for (Aluguel al:historico)
+    	{
+    		System.out.println(al.toString());
+    		System.out.println("--------------------------");
+    	}
     }
+
 
 
     public int getCodigo() {
@@ -87,37 +89,37 @@ public  abstract class Veiculo {
         this.valores = valores;
     }
 
-    public static int getCodigo_tot() {
-        return codigo_tot;
-    }
+	public static int getCodigo_tot() {
+		return codigo_tot;
+	}
 
-    public static void setCodigo_tot(int codigo_tot) {
-        Veiculo.codigo_tot = codigo_tot;
-    }
+	public static void setCodigo_tot(int codigo_tot) {
+		Veiculo.codigo_tot = codigo_tot;
+	}
 
-    public boolean isAlugado() {
-        return alugado;
-    }
+	public boolean isAlugado() {
+		return alugado;
+	}
 
-    public void setAlugado(boolean alugado) {
-        this.alugado = alugado;
-    }
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
+	}
 
-    public boolean isReservado() {
-        return reservado;
-    }
+	public boolean isReservado() {
+		return reservado;
+	}
 
-    public void setReservado(boolean reservado) {
-        this.reservado = reservado;
-    }
+	public void setReservado(boolean reservado) {
+		this.reservado = reservado;
+	}
 
-    public Cliente getClienteReserva() {
-        return clienteReserva;
-    }
+	public Cliente getClienteReserva() {
+		return clienteReserva;
+	}
 
-    public void setClienteReserva(Cliente clienteReserva) {
-        this.clienteReserva = clienteReserva;
-    }
+	public void setClienteReserva(Cliente clienteReserva) {
+		this.clienteReserva = clienteReserva;
+	}
 }
 
 

@@ -9,40 +9,40 @@ public abstract class OptionsViews {
         int option = 0;
         do{
             System.out.println("###Escolha uma opcao");
-            System.out.println("1-Listar Veï¿½culos");
+            System.out.println("1-Listar Veículos");
             System.out.println("2-Exibir  veiculos por codigo");
-            System.out.println("3-Reservar Veï¿½culo");
-            System.out.println("4-Cancelar Reserva de Veï¿½culo");
-            System.out.println("5-Orcar Veï¿½culo");
+            System.out.println("3-Reservar Veículo");
+            System.out.println("4-Cancelar Reserva de Veículo");
+            System.out.println("5-Orcar Veículo");
             System.out.println("6-Sair");
 
-            //     try{
-            option = leitor.nextInt();
-            switch (option){
-                case 1 :
-                    VeiculoView.ExibirVeiculos();
-                    break;
-                case 2 :
-                    VeiculoView.ExibirVeiculoPorCodigo();
-                    break;
+       //     try{
+                option = leitor.nextInt();
+                switch (option){
+                	case 1 :
+                		VeiculoView.ExibirVeiculos();
+                		break;
+                    case 2 :
+                        VeiculoView.ExibirVeiculoPorCodigo();
+                        break;
                     
-                case 3:
-                    LocacaoController.ReservarVeiculo();
-                    break;
-                case 4:
-                    LocacaoController.CancelarReservaVeiculo();
-                    break;
-                case 5:
-                    VeiculoView.Orcamento();
-                    break;
+                    case 3:
+                        LocacaoController.ReservarVeiculo();
+                        break;
+                    case 4:
+                        LocacaoController.CancelarReservaVeiculo();
+                        break;
+                    case 5:
+                        VeiculoView.Orcamento();
+                        break;
 
-            }
-            /*   } catch (InputMismatchException e1){
-                System.out.println("###Insira um numero vï¿½lido");
+                }
+         /*   } catch (InputMismatchException e1){
+                System.out.println("###Insira um numero válido");
                 leitor.nextLine();
                 */
             
-        } while (option != 5);
+        } while (option != 6);
         LoginView.Login();
     }
 }

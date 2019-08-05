@@ -1,7 +1,7 @@
 package models.veiculos;
 
 public class Moto  extends Veiculo{
-    private String cilindradas;
+	private String cilindradas;
     public Moto() {
 
     }

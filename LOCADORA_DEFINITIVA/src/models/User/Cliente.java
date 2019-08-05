@@ -4,21 +4,11 @@ package models.User;
 
 public class Cliente extends Usuario {
 
-	private int id;
-
-	public Cliente(String nome, String endereco, String data_Nasc, int cpf, int tel, int id, String login, String senha) {
+	public Cliente(String nome, String endereco, String data_Nasc, int cpf, long tel, String login, String senha) {
 		super(nome, endereco, data_Nasc, cpf, tel, login,  senha);
-		this.id = id;
 	}
 	public Cliente(){
 
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 }

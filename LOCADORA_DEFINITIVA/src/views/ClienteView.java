@@ -13,7 +13,7 @@ public abstract class ClienteView {
         System.out.println("Digite o CPF para encontrar");
         int cpf = leitor.nextInt();
         leitor.nextLine();
-        Cliente clte = (Cliente) ClienteController.PesquisaPorCpf(cpf);
+        Cliente clte =  ClienteController.PesquisaPorCpf(cpf);
         if(clte != null) {
             System.out.println("Dados pessoa encontrada: ");
             for (Usuario cli : Db.getTabelacliente()) {

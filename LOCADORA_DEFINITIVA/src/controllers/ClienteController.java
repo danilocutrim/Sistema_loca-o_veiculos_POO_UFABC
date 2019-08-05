@@ -4,6 +4,7 @@ import db.Db;
 import models.User.Cliente;
 import models.User.Usuario;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class ClienteController {
@@ -12,7 +13,7 @@ public abstract class ClienteController {
     public static void CadastrarCliente() {
 
     }
-    public static void  CadastraCliente(){
+    public static void  CadastraCliente()   {
         System.out.println("digite o nome do cliente:");
         String nomeCliente = leitor.nextLine();
 
@@ -49,9 +50,14 @@ public abstract class ClienteController {
         clie.setLogin(login);
         clie.setSenha(senha);
         Db.getTabelacliente().add(clie);
+        try {
+        Db.salvarClienteFunc();} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
     }
-    public static Usuario PesquisaPorCpf(int cpfCod){
-        for(Usuario cl : Db.getTabelacliente()){
+    public static Cliente PesquisaPorCpf(int cpfCod){
+        for(Cliente cl : Db.getTabelacliente()){
             if(cl.getCpf() == cpfCod ){
                 return cl;
             }

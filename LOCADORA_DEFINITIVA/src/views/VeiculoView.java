@@ -12,7 +12,7 @@ public abstract class VeiculoView {
     public static void ExibirVeiculos(){
         System.out.println("###Lista de veiculos cadastrados**");
         for(Veiculo veic : Db.getTabelaveiculos()){
-            System.out.println("Cï¿½digo: " + veic.getCodigo());
+            System.out.println("Código: " + veic.getCodigo());
             System.out.println("Modelo:" + veic.getModelo());
             System.out.println("Ano: " + veic.getAno());
             System.out.println("Valor: " + veic.getValores());
@@ -21,7 +21,7 @@ public abstract class VeiculoView {
     public static void ExibirVeiculoPorCodigo(){
         System.out.println("#######");
         System.out.println("###Exibir por codigo###");
-        System.out.println("Informe o cï¿½digo");
+        System.out.println("Informe o código");
         int codveic = leitor.nextInt();
         leitor.nextLine();
 
@@ -29,7 +29,7 @@ public abstract class VeiculoView {
         if (veicu != null) {
             for( Veiculo c : Db.getTabelaveiculos()){
                 if(c.getCodigo() == veicu.getCodigo()){
-                    System.out.println("Cï¿½digo: " + veicu.getCodigo());
+                    System.out.println("Código: " + veicu.getCodigo());
                     System.out.println("Modelo:" + veicu.getValores());
                     System.out.println("Ano: " + veicu.getAno());
                     System.out.println("Valor: " + veicu.getValores());
@@ -37,19 +37,19 @@ public abstract class VeiculoView {
                 }
             }
         } else{
-            System.out.println("veiculo nï¿½o cadastrado");
+            System.out.println("veiculo não cadastrado");
         }
         
 
     }
     public static void  Orcamento()
     {
-        System.out.println("Insira o codigo do Veiculo: ");
-        int codCarro  = leitor.nextInt();
-        System.out.println("Insira o numero de dias do aluguel: ");
-        int dias = leitor.nextInt();
-        Veiculo v = LocacaoController.PesquisarCarroPorCodigo(codCarro);
-        System.out.println("Valor do orcamento solicitado: " + v.getValores()*dias);
+    	System.out.println("Insira o codigo do Veiculo: ");
+    	int codCarro  = leitor.nextInt();
+    	System.out.println("Insira o numero de dias do aluguel: ");
+    	int dias = leitor.nextInt();
+    	Veiculo v = LocacaoController.PesquisarCarroPorCodigo(codCarro);
+    	System.out.println("Valor do orcamento solicitado: " + v.getValores()*dias);
     }
 
 }

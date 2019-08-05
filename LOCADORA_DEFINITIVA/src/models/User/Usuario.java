@@ -7,12 +7,12 @@ public  abstract class Usuario {
 	protected String data_Nasc;
 	protected String sexo;
 	protected int cpf;
-	protected int tel;
+	protected long tel;
 	private String login;
 	private String senha;
 	
 
-	public Usuario(String nome, String endereco, String data_Nasc, int cpf, int tel, String login, String senha) {
+	public Usuario(String nome, String endereco, String data_Nasc, int cpf, long tel, String login, String senha) {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.data_Nasc = data_Nasc;
@@ -66,11 +66,11 @@ public  abstract class Usuario {
 		this.cpf = cpf;
 	}
 
-	public int getTel() {
+	public long getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(long tel) {
 		this.tel = tel;
 	}
 	public String getLogin() {

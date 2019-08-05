@@ -30,7 +30,7 @@ public abstract class LocacaoView {
         if(clt != null){
             for(Aluguel al : Db.getTabelalocacoes()){
                 if(al.getCliente()==clt)
-                    System.out.print(al.toString());
+                	System.out.print(al.toString());             
             }
         } else {
             System.out.println("CPF nao encontrado");
@@ -38,11 +38,11 @@ public abstract class LocacaoView {
     }
     public static void ExibirLocacaoPorVeiculo()
     {
-        System.out.print("Digite o cod do Veï¿½culo");
-        int cod = leitor.nextInt();
-        leitor.nextLine();
-        Veiculo v = LocacaoController.BuscaCod(cod);
-        v.print_Historico();
+    	System.out.print("Digite o cod do Veículo");
+    	int cod = leitor.nextInt();
+    	leitor.nextLine();
+    	Veiculo v = LocacaoController.BuscaCod(cod);
+    	v.print_Historico();
 
     }
     

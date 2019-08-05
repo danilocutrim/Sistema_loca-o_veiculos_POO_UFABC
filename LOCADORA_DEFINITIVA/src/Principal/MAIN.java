@@ -9,6 +9,7 @@ public class MAIN {
 	public static void main(String[] args) throws Exception {
 
 		Db.LaunchDB();
+		Db.CarregaClienteFunc();
 		LoginView.Login();
 		
 		

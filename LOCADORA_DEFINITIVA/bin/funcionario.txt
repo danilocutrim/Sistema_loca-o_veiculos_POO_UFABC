@@ -1,0 +1,3 @@
+joana|rua das ameixeiras|05.05.1994|145|Feminino|1234532|joana|joana|
+ana|rua princeza isabel|08.01.1969|156|Feminino|2432234|ana|ana|
+Paulo|av taboão|01.04.1965|324234|masculino|243242|paulo|paulo|
